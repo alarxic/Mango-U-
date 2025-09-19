@@ -57,6 +57,6 @@ CutsceneService:Play(cutscene)
 ```
 All functions within CSData will be fired at the appropriate times, based on where you defined animation events.
 ## Origins
-The Mango! module is a project by [jun-ro](https://github.com/jun-ro). While the original can be used to make acceptable sequences, there are some issues and confusing syntaxes that had to be addressed and fixed. Mango! [U] serves as a simpler, cleaner version of the original that will be continuously developed as time goes on.
+The Mango! module is a project by [jun-ro](https://github.com/jun-ro). While the original can be used to make acceptable sequences, there are some issues and confusing syntaxes that have to be addressed and fixed. Mango! [U] serves as a simpler, cleaner version of the original that will be continuously developed as time goes on.
 
 ### Thank you ^^
