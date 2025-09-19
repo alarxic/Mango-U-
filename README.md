@@ -31,7 +31,7 @@ local cutscene = CutsceneService.new()
 ### Creating CSData
 - CSData is a separate module that contains a table with functions that act accordingly to animation events.
   - At the end of the table, we must include an Close function. This function will fire at the end of the cutscene.
-  - CameraFrames is a Moon Animator camera information export. Moon Animator is a separate plugin that you may have to **buy.**
+  - CameraFrames is a Moon Animator camera information export folder. Moon Animator is a separate plugin that you may have to **buy.**
 ```lua
 local CSData = {
 	['rbxassetid://animationID'] = {
