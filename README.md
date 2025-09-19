@@ -34,10 +34,10 @@ local cutscene = CutsceneService.new()
 local CSData = {
 	['rbxassetid://animationID'] = {
 		['example1'] = function()
-            print("Foo!")
+			print("Foo!")
 		end,
 		['example2'] = function()
-            print("Bar!")
+      print("Bar!")
 		end,
 
 		Close = function()
