@@ -1,4 +1,5 @@
 # Mango! [U]
+<img src="https://raw.githubusercontent.com/alarxic/Mango-U-/refs/heads/main/mangou.png" width="128">
 A heavily modified version of the Mango! cutscene service module.
 
 ## Setting Up
@@ -34,29 +35,59 @@ local cutscene = CutsceneService.new()
   - CameraFrames is a Moon Animator camera information export folder. Moon Animator is a separate plugin that you may have to **buy.**
 ```lua
 local CSData = {
-	['rbxassetid://animationID'] = {
-		['example1'] = function()
-			print("Foo!")
-		end,
-		['example2'] = function()
-			print("Bar!")
-		end,
+	['cutsceneID'] = {
+		functions = {
+			['example1'] = function()
+				print("Foo!")
+			end,
+			['example2'] = function()
+				print("Bar!")
+			end,
+		},
+		
+		targets = {
+			{
+				target = character,
+				animationID = "rbxassetid://id"
+			},
+		},
 
 		Close = function()
 			print("Byebye!")
 		end,
-		CameraFrames = frames
+		
+		CameraFrames = folder
 	}
 }
-
 return CSData
 ```
+> [!NOTE]
+> The 'targets' table will be where you include all of the Humanoids/AnimationControllers that you want in the cutscene. Provide an object path to the target, and an animation ID.
+
 > [!TIP]
 > While you do not have to use the Close function, it is vital that it exists to ensure the cutscene properly plays without error.
+### Setting Targets Dynamically
+- Your cutscenes may include characters that may or may not be included when a cutscene plays(e.g. players moving in and out of a queue or victims in a fight being different each time). To solve this, we can change targets with one function.
+```lua
+CutsceneService:setTargets(cutscene, id, {
+	{
+		target = character1,
+		animationID = "rbxassetid://id"
+	},
+	{
+		target = character2,
+		animationID = "rbxassetid://id"
+	},
+})
+```
+- Numerous targets can be defined.
+> [!NOTE]
+> Each time you use :setTargets(), the table in which targets are stored resets. Make sure to include all targets when you use the function!
 ### Playing the Cutscene
 - After everything is prepared, you can now play the cutscene.
+  - Include the cutscene ID that you named in CSData.
 ```lua
-CutsceneService:Play(cutscene)
+CutsceneService:Play(cutscene, "cutsceneID")
 ```
 All functions within CSData will be fired at the appropriate times, based on where you defined animation events.
 ## Origins
