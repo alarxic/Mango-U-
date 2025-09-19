@@ -8,7 +8,7 @@ A heavily modified version of the Mango! cutscene service module.
   ```lua
   local CutsceneService = require(game.ReplicatedStorage.CutsceneService)
   ```
-- You can provide your own path.
+  You can provide your own path.
 > [!CAUTION]
 > Do NOT use a regular `Script`. This module is not designed to be used by the server. **If you would like several players to view the same cutscene at once, try using RemoteEvents that fire on all clients.**
 ## Usage
