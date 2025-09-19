@@ -28,7 +28,7 @@ local cutscene = CutsceneService.new()
 > The CSData module is not included in this module. To acquire CSData, you'll have to make your own table. To see CSData, look below...
 
 ### Creating CSData
-- The format of CSData is a table with functions that act accordingly to animation events.
+- CSData is a separate module that contains a table with functions that act accordingly to animation events.
   - At the end of the table, we must include an Close function. This function will fire at the end of the cutscene.
 ```lua
 local CSData = {
@@ -37,7 +37,7 @@ local CSData = {
 			print("Foo!")
 		end,
 		['example2'] = function()
-      print("Bar!")
+			print("Bar!")
 		end,
 
 		Close = function()
