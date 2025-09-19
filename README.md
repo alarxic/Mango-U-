@@ -62,7 +62,7 @@ local CSData = {
 return CSData
 ```
 > [!NOTE]
-> The 'targets' table will be where you include all of the Humanoids/AnimationControllers that you want in the cutscene. Provide an object path to the target, and an animation ID.
+> The 'targets' table will be where you include all of the character models that you want in the cutscene. Provide an object path to the target, and an animation ID.
 
 > [!TIP]
 > While you do not have to use the Close function, it is vital that it exists to ensure the cutscene properly plays without error.
