@@ -30,25 +30,24 @@ local cutscene = CutsceneService.new()
 > The CSData module is not included in this module. To acquire CSData, you'll have to make your own table. To see CSData, look below...
 
 ### Creating CSData
-- CSData is a separate module that contains a table with functions that act accordingly to animation events.
+- CSData is a separate module that contains all information needed to play the cutscene.
   - At the end of the table, we must include an Close function. This function will fire at the end of the cutscene.
   - CameraFrames is a Moon Animator camera information export folder. Moon Animator is a separate plugin that you may have to **buy.**
 ```lua
 local CSData = {
-	['cutsceneID'] = {
-		functions = {
-			['example1'] = function()
-				print("Foo!")
-			end,
-			['example2'] = function()
-				print("Bar!")
-			end,
-		},
-		
+	['cutscene-id'] = {
 		targets = {
 			{
 				target = character,
-				animationID = "rbxassetid://id"
+				animationID = "rbxassetid://id",
+				functions = {
+					['example1'] = function()
+						print("Foo!")
+					end,
+					['example2'] = function()
+						print("Bar!")
+					end,
+				},
 			},
 		},
 
@@ -59,10 +58,15 @@ local CSData = {
 		CameraFrames = folder
 	}
 }
+
 return CSData
 ```
+- The cutscene ID can be named to anything that you'd like.
 > [!NOTE]
 > The 'targets' table will be where you include all of the character models that you want in the cutscene. Provide an object path to the target, and an animation ID.
+
+> [!WARNING]
+> Animation event functions are tied to each target.
 
 > [!TIP]
 > While you do not have to use the Close function, it is vital that it exists to ensure the cutscene properly plays without error.
@@ -72,11 +76,27 @@ return CSData
 CutsceneService:setTargets(cutscene, id, {
 	{
 		target = character1,
-		animationID = "rbxassetid://id"
+		animationID = "rbxassetid://id",
+		functions = {
+			['example1'] = function()
+				print("Foo!")
+			end,
+			['example2'] = function()
+				print("Bar!")
+			end,
+		},
 	},
 	{
 		target = character2,
-		animationID = "rbxassetid://id"
+		animationID = "rbxassetid://id",
+		functions = {
+			['example1'] = function()
+				print("Hello...")
+			end,
+			['example2'] = function()
+				print("World!")
+			end,
+		},
 	},
 })
 ```
@@ -87,10 +107,10 @@ CutsceneService:setTargets(cutscene, id, {
 - After everything is prepared, you can now play the cutscene.
   - Include the cutscene ID that you named in CSData.
 ```lua
-CutsceneService:Play(cutscene, "cutsceneID")
+CutsceneService:Play(cutscene, "cutscene-id")
 ```
 All functions within CSData will be fired at the appropriate times, based on where you defined animation events.
 ## Origins
-The Mango! module is a project by [jun-ro](https://github.com/jun-ro). While the original can be used to make acceptable sequences, there are some issues and confusing syntaxes that have to be addressed and fixed. Mango! [U] serves as a simpler, cleaner version of the original that will be continuously developed as time goes on.
+The Mango! module is a project by [jun-ro](https://github.com/jun-ro). Mango! [U] serves as a cleaner version of the original that will be continuously developed as time goes on.
 
 ### Thank you ^^
